@@ -54,7 +54,9 @@ require ALEPROPERTY_PATH . 'inc/class-aleproperty-wishlist.php';
 class aleProperty{
 
     function register(){
+        /* Підключення стилів і скриптів в адмінку */
         add_action('admin_enqueue_scripts',[$this,'enqueue_admin']);
+        /* Підключення стилів і скриптів на фронт */
         add_action('wp_enqueue_scripts', [$this,'enqueue_front']);
 
         add_action('plugins_loaded',[$this,'load_text_domain']);
@@ -161,11 +163,13 @@ class aleProperty{
         load_plugin_textdomain('aleproperty', false, dirname(plugin_basename(__FILE__)).'/lang');
     }
 
+    /* Ф-ція підключення стилів і скриптів в адмінку */
     public function enqueue_admin(){
         wp_enqueue_style('aleProperty_style_admin', plugins_url('/assets/css/admin/style.css',__FILE__));
         wp_enqueue_script('aleProperty_script_admin', plugins_url('/assets/js/admin/scripts.js', __FILE__),array('jquery'),'1.0',true);
     }
 
+    /* Ф-ція підключення стилів і скриптів на фронт */
     public function enqueue_front(){
         wp_enqueue_style('aleProperty_style', plugins_url('/assets/css/front/style.css',__FILE__));
         wp_enqueue_script('aleProperty_script', plugins_url('/assets/js/front/scripts.js', __FILE__),array('jquery'),'1.0',true);
