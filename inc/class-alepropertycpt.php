@@ -8,7 +8,9 @@ if(!class_exists('alePropertyCpt')){
             // Реєструємо пост тайпи
             add_action('init',[$this,'custom_post_type']);
 
+            // Підключаємо мета бокси
             add_action('add_meta_boxes',[$this,'add_meta_box_property']);
+            // Підключення ф-ції збереження данних метабоксів
             add_action('save_post',[$this,'save_matabox'],10,2);
 
             add_action('manage_property_posts_columns', [$this,'custom_colums_for_property']);
@@ -18,54 +20,72 @@ if(!class_exists('alePropertyCpt')){
         
         }
 
+        /**
+         * Додаємо Мета Бокси для Пост тайпів (ціна, умови, період, номер телефону і т.і)
+         * @return void
+         */
         public function add_meta_box_property(){
+            // Мета бокси для пост тайпа "property"
             add_meta_box(
                 'aleproperty_settings',
                 'Property Settings',
-                [$this, 'metabox_property_html'],
+                [$this, 'metabox_property_html'], // Ф-ція, для будування тіла
                 'property',
                 'normal',
                 'default'
             );
         }
 
+        // Функція для збереження введених даних в БД, з перевірками на безпеку
         public function save_matabox($post_id,$post){
 
+            // Перевірка на нонсенс (дані з прихованого поля wp_nonce_field();
             if(!isset($_POST['_aleproperty']) || !wp_verify_nonce($_POST['_aleproperty'], 'alepropertyfields')){
                 return $post_id;
             }
 
+            // Авто зберігання відміняємо
             if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE){
                 return $post_id;
             }
 
+            // Чи ми на необхідному ПостТайпі
             if($post->post_type != 'property'){
                 return $post_id;
             }
 
+            // Чи у користувача є дозвіл зберігати пости
             $post_type = get_post_type_object($post->post_type);
             if(!current_user_can($post_type->cap->edit_post,$post_id)){
                 return $post_id;
             }
-            
+
+
+            // Якщо є щось в полі то зберігаємо через санітізацію,
+            // якщо пусто - видаляємо
+
+            // Для прайса
             if(is_null($_POST['aleproperty_price'])){
                 delete_post_meta($post_id,'aleproperty_price');
             } else {
                 update_post_meta($post_id,'aleproperty_price', sanitize_text_field(intval($_POST['aleproperty_price'])));
             }
 
+            // Для періода
             if(is_null($_POST['aleproperty_period'])){
                 delete_post_meta($post_id,'aleproperty_period');
             } else {
                 update_post_meta($post_id,'aleproperty_period', sanitize_text_field($_POST['aleproperty_period']));
             }
 
+            // Для типу
             if(is_null($_POST['aleproperty_type'])){
                 delete_post_meta($post_id,'aleproperty_type');
             } else {
                 update_post_meta($post_id,'aleproperty_type', sanitize_text_field($_POST['aleproperty_type']));
             }
 
+            // Для агента
             if(is_null($_POST['aleproperty_agent'])){
                 delete_post_meta($post_id,'aleproperty_agent');
             } else {
@@ -75,12 +95,15 @@ if(!class_exists('alePropertyCpt')){
             return $post_id;
         }
 
+        // Ф-ція, для будування тіла метабокса
         public function metabox_property_html($post){
+            // get_post_meta - достати мета бокси із БД
             $price = get_post_meta($post->ID, 'aleproperty_price', true);
             $period = get_post_meta($post->ID, 'aleproperty_period', true);
             $type = get_post_meta($post->ID, 'aleproperty_type', true);
             $agent_meta = get_post_meta($post->ID, 'aleproperty_agent', true);
 
+            // Передача прихованих полів для перевірки пізніше
             wp_nonce_field('alepropertyfields','_aleproperty');
 
             echo '
