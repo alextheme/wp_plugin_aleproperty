@@ -1,0 +1,41 @@
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.archive_property,
+.archive_agent {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.archive_property article.type-property,
+.archive_agent article.agent {
+    background-color: #FFF;
+    padding:40px;
+    width: 30%;
+}
+.single_property article.type-property {
+    background-color: #FFF;
+    padding:40px;
+}
+article.property .property_info span {
+    display:block;
+}
+#add_property p {
+    margin-bottom:20px;
+}
+#add_property label {
+    display:block;
+}
+#add_property input,
+#add_property textarea,
+#add_property select {
+    width:50%;
+}
+
+.list .property {
+    margin-bottom:20px;
+    background:#FFF;
+    padding:30px;
+}

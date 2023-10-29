@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: aleProperty\n"
+"POT-Creation-Date: 2021-05-20 13:11+0300\n"
+"PO-Revision-Date: 2021-05-20 13:34+0300\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: esc_html__;esc_html_e\n"
+"Last-Translator: \n"
+"Language: ru\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: inc/cpt.php:80
+msgid "Price"
+msgstr "Цена"
+
+#: inc/cpt.php:85
+msgid "Period"
+msgstr "Период"
+
+#: inc/cpt.php:90 inc/cpt.php:175
+msgid "Type"
+msgstr "Тип"
+
+#: inc/cpt.php:93
+msgid "For Sale"
+msgstr "Для Продажи"
+
+#: inc/cpt.php:94
+msgid "For Rent"
+msgstr ""
+
+#: inc/cpt.php:95
+msgid "Sold"
+msgstr ""
+
+#: inc/cpt.php:104 inc/cpt.php:132
+msgid "Agents"
+msgstr "Агенты"
+
+#: inc/cpt.php:106
+msgid "Select Agent"
+msgstr ""
+
+#: inc/cpt.php:124
+msgid "Property"
+msgstr "Объекты"
+
+#: inc/cpt.php:140
+msgid "Search Locations"
+msgstr ""
+
+#: inc/cpt.php:141
+msgid "All Locations"
+msgstr ""
+
+#: inc/cpt.php:142
+msgid "Parent Location"
+msgstr ""
+
+#: inc/cpt.php:143
+msgid "Parent Location:"
+msgstr ""
+
+#: inc/cpt.php:144
+msgid "Edit Location"
+msgstr ""
+
+#: inc/cpt.php:145
+msgid "Update Location"
+msgstr ""
+
+#: inc/cpt.php:146
+msgid "Add New Location"
+msgstr ""
+
+#: inc/cpt.php:147
+msgid "New Location Name"
+msgstr ""
+
+#: inc/cpt.php:148
+msgid "Location"
+msgstr "Локация"
+
+#: inc/cpt.php:167
+msgid "Search Types"
+msgstr ""
+
+#: inc/cpt.php:168
+msgid "All Typens"
+msgstr ""
+
+#: inc/cpt.php:169
+msgid "Parent Type"
+msgstr ""
+
+#: inc/cpt.php:170
+msgid "Parent Type:"
+msgstr ""
+
+#: inc/cpt.php:171
+msgid "Edit Type"
+msgstr ""
+
+#: inc/cpt.php:172
+msgid "Update Type"
+msgstr ""
+
+#: inc/cpt.php:173
+msgid "Add New Type"
+msgstr ""
+
+#: inc/cpt.php:174
+msgid "New Type Name"
+msgstr ""
