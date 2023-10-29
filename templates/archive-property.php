@@ -7,10 +7,9 @@ get_header(); ?>
 <?php $aleProperty_Template->get_template_part('partials/filter'); ?>
 
 <div class="wrapper archive_property">
-    <?php 
+    <?php
 
-
-
+    // Вивід контенту
     if(!empty($_POST['submit'])){
         
         $args = array(

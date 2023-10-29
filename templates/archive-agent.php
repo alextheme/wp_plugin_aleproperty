@@ -6,7 +6,8 @@ get_header(); ?>
 
 <div class="wrapper archive_agent">
     <?php 
-    
+
+    // Вивід контенту
     if ( have_posts() ) {
 
         // Load posts loop.

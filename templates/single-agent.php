@@ -5,8 +5,9 @@
 get_header(); ?>
 
 <div class="wrapper single_agent">
-    <?php 
-    
+    <?php
+
+    // Вивід контенту
     if ( have_posts() ) {
 
         // Load posts loop.
