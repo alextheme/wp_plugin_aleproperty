@@ -11,6 +11,25 @@ Text Domain: aleproperty
 Domain Path: /lang
 */
 
+// Структура файлов
+// aleproperty/
+//   admin/
+//   assets/
+//	   css/
+//       admin/
+//       front/
+//     img/
+//     js/
+//       admin/
+//       front/
+//    inc/
+//    lang/
+//    templates
+//    aleproperty.php
+//    uninstall.php
+
+
+// Доступ к файлу только если ВП обращается
 if(!defined('ABSPATH')){
     die;
 }
@@ -152,6 +171,7 @@ class aleProperty{
         wp_enqueue_script('jquery-form');
     }
 
+    // Обробка подій при активаціі та деактивації плагіна
     static function activation(){
         flush_rewrite_rules();
     }
@@ -160,10 +180,12 @@ class aleProperty{
     }
 }
 
+// Чи є класс
 if(class_exists('aleProperty')){
     $aleProperty = new aleProperty();
     $aleProperty->register();
 }
 
+// Хуки Активації/Деактивації
 register_activation_hook(__FILE__, array($aleProperty,'activation') );
 register_deactivation_hook(__FILE__, array($aleProperty,'deactivation') );
