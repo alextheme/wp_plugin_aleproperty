@@ -8,6 +8,8 @@ Author: CRIK0VA
 Author URI: https://geniuscourses.com/
 Licence: GPLv2 or later
 Text Domain: aleproperty
+
+# Вказати шлях до теки з мовними файлама
 Domain Path: /lang
 */
 
@@ -59,6 +61,7 @@ class aleProperty{
         /* Підключення стилів і скриптів на фронт */
         add_action('wp_enqueue_scripts', [$this,'enqueue_front']);
 
+        // Підключення Язикових файлів для перекладу
         add_action('plugins_loaded',[$this,'load_text_domain']);
 
         add_action('widgets_init',[$this,'register_widget']);
@@ -159,6 +162,7 @@ class aleProperty{
         return $html;
     }
 
+    /* Функція підключення мовних файлів для перекладу */
     function load_text_domain(){
         load_plugin_textdomain('aleproperty', false, dirname(plugin_basename(__FILE__)).'/lang');
     }
