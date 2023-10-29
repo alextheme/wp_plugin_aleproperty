@@ -1,18 +1,23 @@
 <?php
 
+// Наш класс для завантаження шаблонів
+
 class aleProperty_Template_Loader extends Gamajo_Template_Loader {
 
-    protected $filter_prefix = 'aleproperty';
+    protected $filter_prefix = 'aleproperty'; // префікс це наш слаг
 
-    protected $theme_template_directory = 'aleproperty';
+    protected $theme_template_directory = 'aleproperty'; // як правило таж назва. Це назва теки яка буде в шаблоні теми переписувати шаблони плагіна
 
-    protected $plugin_directory = ALEPROPERTY_PATH;
+    protected $plugin_directory = ALEPROPERTY_PATH; // шлях до плагіна
 
-    protected $plugin_template_director = 'templates';
+    protected $plugin_template_director = 'templates'; // каталог в плагіні де зберігаються шаблони
 
     public $templates;
 
+    // ...
     public function register(){
+
+        // Підключення наших шаблонів через фільтр
         add_filter('template_include', [$this,'aleproperties_templates']);
 
         $this->templates = array(
@@ -49,9 +54,13 @@ class aleProperty_Template_Loader extends Gamajo_Template_Loader {
         return $templates;
 
     }
+
+    // ...
     public function aleproperties_templates($template){
 
+        // перевірка на пост тайп "property"
         if(is_post_type_archive('property')){
+            // пошук цих файлів в корні теми, на території темплейтів
             $theme_files = ['archive-property.php','aleproperty/archive-property.php'];
             $exist = locate_template($theme_files, false);
             if($exist != ''){
@@ -59,7 +68,10 @@ class aleProperty_Template_Loader extends Gamajo_Template_Loader {
             } else {
                 return plugin_dir_path(__DIR__).'templates/archive-property.php';
             }
-        } elseif(is_post_type_archive('agent')){
+        }
+        // перевірка на пост тайп "agent"
+        elseif(is_post_type_archive('agent')){
+            // пошук цих файлів в корні теми, на території темплейтів
             $theme_files = ['archive-agent.php','aleproperty/archive-agent.php'];
             $exist = locate_template($theme_files, false);
             if($exist != ''){
@@ -67,7 +79,10 @@ class aleProperty_Template_Loader extends Gamajo_Template_Loader {
             } else {
                 return plugin_dir_path(__DIR__).'templates/archive-agent.php';
             }
-        } elseif(is_singular('property')){
+        }
+        // перевірка на пост тайп окремої сторінки "property"
+        elseif(is_singular('property')){
+            // пошук цих файлів в корні теми, на території темплейтів
             $theme_files = ['single-property.php','aleproperty/single-property.php'];
             $exist = locate_template($theme_files, false);
             if($exist != ''){
@@ -75,7 +90,10 @@ class aleProperty_Template_Loader extends Gamajo_Template_Loader {
             } else {
                 return plugin_dir_path(__DIR__).'templates/single-property.php';
             }
-        } elseif(is_singular('agent')){
+        }
+        // перевірка на пост тайп окремої сторінки "agent"
+        elseif(is_singular('agent')){
+            // пошук цих файлів в корні теми, на території темплейтів
             $theme_files = ['single-agent.php','aleproperty/single-agent.php'];
             $exist = locate_template($theme_files, false);
             if($exist != ''){
@@ -89,5 +107,6 @@ class aleProperty_Template_Loader extends Gamajo_Template_Loader {
     }
 }
 
+// ініціалізація методів класу
 $aleProperty_Template = new aleProperty_Template_Loader();
 $aleProperty_Template->register();

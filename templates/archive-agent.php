@@ -1,4 +1,7 @@
 <?php
+
+// архівний файл для постайпа
+
 get_header(); ?>
 
 <div class="wrapper archive_agent">

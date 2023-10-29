@@ -42,9 +42,11 @@ define('ALEPROPERTY_PATH',plugin_dir_path(__FILE__));
 if(!class_exists('alePropertyCpt')){
     require ALEPROPERTY_PATH . 'inc/class-alepropertycpt.php';
 }
+// Підключення Плагіна для Завантаження Шаблонів
 if(!class_exists('Gamajo_Template_Loader')){
     require ALEPROPERTY_PATH . 'inc/class-gamajo-template-loader.php';
 }
+// Підключення нашого класу для завантаження Шаблонів
 require ALEPROPERTY_PATH . 'inc/class-aleproperty-template-loader.php';
 require ALEPROPERTY_PATH . 'inc/class-aleproperty-shortcodes.php';
 require ALEPROPERTY_PATH . 'inc/class-aleproperty-filter-widget.php';

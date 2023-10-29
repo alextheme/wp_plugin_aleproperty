@@ -1,4 +1,7 @@
 <?php
+
+// архівний файл окремої сторінки для постайпа
+
 get_header(); ?>
 
 <div class="wrapper single_property">

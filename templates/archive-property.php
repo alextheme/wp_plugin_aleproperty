@@ -1,4 +1,7 @@
 <?php
+
+// архівний файл для постайпа
+
 get_header(); ?>
 
 <?php $aleProperty_Template->get_template_part('partials/filter'); ?>
