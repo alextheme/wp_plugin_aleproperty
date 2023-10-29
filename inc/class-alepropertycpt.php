@@ -3,7 +3,9 @@ if(!class_exists('alePropertyCpt')){
 
     class alePropertyCpt{
 
+        // Склали всі хуки сюди
         public function register(){
+            // Реєструємо пост тайпи
             add_action('init',[$this,'custom_post_type']);
 
             add_action('add_meta_boxes',[$this,'add_meta_box_property']);
@@ -120,16 +122,22 @@ if(!class_exists('alePropertyCpt')){
             }
         }
 
+        /**
+         * Custom Post Types
+         * @return void
+         */
         public function custom_post_type(){
 
+            /* Post Types "Property" */
             register_post_type('property',
             array(
-                'public' => true,
-                'has_archive' => true,
-                'rewrite' => ['slug'=>'properties'],
+                'public' => true, // щоб був доступний у форонті
+                'has_archive' => true, // це архівний пост
+                'rewrite' => ['slug'=>'properties'], // посилання слаг
                 'label' => esc_html__('Property','aleproperty'),
-                'supports' => array('title','editor','thumbnail'),
+                'supports' => array('title','editor','thumbnail'),// Какие поля будет поддерживать этот пост
             ));
+            /* Post Types "Agent" */
             register_post_type('agent',
             array(
                 'public' => true,
@@ -137,7 +145,7 @@ if(!class_exists('alePropertyCpt')){
                 'rewrite' => ['slug'=>'agents'],
                 'label' => esc_html__('Agents','aleproperty'),
                 'supports' => array('title','editor','thumbnail'),
-                'show_in_rest' =>true
+                'show_in_rest' =>true, // для відображення нового редактора Guttenberg
             ));
 
             $labels = array(
@@ -270,5 +278,5 @@ if(!class_exists('alePropertyCpt')){
 }
 if(class_exists('alePropertyCpt')){
     $alePropertyCpt = new alePropertyCpt();
-    $alePropertyCpt->register();
+    $alePropertyCpt->register(); // Викликаємо реєстрацію хуків
 }
