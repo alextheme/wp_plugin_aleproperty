@@ -148,6 +148,8 @@ if(!class_exists('alePropertyCpt')){
                 'show_in_rest' =>true, // для відображення нового редактора Guttenberg
             ));
 
+
+            // Реєструємо таксономію "location"
             $labels = array(
                 'name'              => esc_html_x( 'Locations', 'taxonomy general name', 'aleproperty' ),
                 'singular_name'     => esc_html_x( 'Location', 'taxonomy singular name', 'aleproperty' ),
@@ -162,8 +164,8 @@ if(!class_exists('alePropertyCpt')){
                 'menu_name'         => esc_html__( 'Location', 'aleproperty' ),
             );
             $args = array(
-                'hierarchical' => true,
-                'show_ui' => true,
+                'hierarchical' => true, // Дерево видна структура таксономії
+                'show_ui' => true, // За замовчанням буде технічна таксономія і невидна в адмінці, щоб була видна ставимо труе
                 'show_admin_column' => true,
                 'query_var' => true,
                 'rewrite' => array('slug'=>'properties/location'),
@@ -175,6 +177,8 @@ if(!class_exists('alePropertyCpt')){
             unset($args);
             unset($labels);
 
+
+            // Реєструємо таксономію "property-type"
             $labels = array(
                 'name'              => esc_html_x( 'Types', 'taxonomy general name', 'aleproperty' ),
                 'singular_name'     => esc_html_x( 'Type', 'taxonomy singular name', 'aleproperty' ),

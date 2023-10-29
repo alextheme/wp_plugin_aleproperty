@@ -36,6 +36,7 @@ if(!defined('ABSPATH')){
 
 define('ALEPROPERTY_PATH',plugin_dir_path(__FILE__));
 
+// Підключаємо класс з налаштуваннями Пост Тайпів
 if(!class_exists('alePropertyCpt')){
     require ALEPROPERTY_PATH . 'inc/class-alepropertycpt.php';
 }
